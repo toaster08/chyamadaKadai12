@@ -37,7 +37,7 @@ final class Presenter: PresenterInput {
 
 extension Presenter: UserDefaultLoad {
     func loadDefaultTax() {
-        if taxDealModel.hasDefaultTax() == true {
+        if taxDealModel.hasDefaultTax() {
             let tax = taxDealModel.loadDefaultTax()
             view?.setUserDefault(of: tax)
         }
