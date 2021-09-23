@@ -21,8 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let model = TaxDealModel()
         let presenter = Presenter(view: viewController, model: model)
         viewController.inject(presenter: presenter)
-
-        //        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
