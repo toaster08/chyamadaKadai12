@@ -30,7 +30,7 @@ final class TaxDealModel: TaxUserDefaultModel, TotalFeeCalculationModel {
 
     func loadDefaultTax() -> Double {
         guard let tax = TaxDealModel.userDefaults.object(forKey: Self.taxString) as? Double else {
-            return 0
+            fatalError()
         }
         return tax
     }
