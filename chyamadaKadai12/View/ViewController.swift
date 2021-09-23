@@ -38,6 +38,9 @@ final class ViewController: UIViewController {
     @objc private func didTapCalculate() {
         presenter.calculate(amount: amountInputTextField.text,
                             tax: taxInputTextField.text)
+
+        amountInputTextField.endEditing(true)
+        taxInputTextField.endEditing(true)
     }
 }
 
