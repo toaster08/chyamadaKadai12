@@ -7,12 +7,9 @@
 
 import Foundation
 
-protocol UserDefaultLoad {
-    func loadDefaultTax()
-}
-
 protocol PresenterInput {
     func calculate(amount: String?, tax: String?)
+    func viewDidLoad()
 }
 
 final class Presenter: PresenterInput {
@@ -33,13 +30,11 @@ final class Presenter: PresenterInput {
         let result = taxDealModel.multyply(amount, by: tax)
         view?.congfigure(result: result)
     }
-}
 
-extension Presenter: UserDefaultLoad {
-    func loadDefaultTax() {
+    func viewDidLoad() {
         if taxDealModel.hasDefaultTax() {
             let tax = taxDealModel.loadDefaultTax()
-            view?.setUserDefault(of: tax)
+            view?.congfigure(tax: tax)
         }
     }
 }

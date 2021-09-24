@@ -10,7 +10,7 @@ import UIKit
 
 protocol ResultPresentationOutput: AnyObject {
     func congfigure(result: Double)
-    func setUserDefault(of tax: Double)
+    func congfigure(tax: Double)
 }
 
 final class ViewController: UIViewController {
@@ -25,13 +25,14 @@ final class ViewController: UIViewController {
         }
     }
 
-    private var presenter: (PresenterInput&UserDefaultLoad)!
+    private var presenter: PresenterInput!
 
     override func viewDidLoad() {
-        presenter.loadDefaultTax()
+        super.viewDidLoad()
+        presenter.viewDidLoad()
     }
 
-    func inject(presenter: PresenterInput&UserDefaultLoad) {
+    func inject(presenter: PresenterInput) {
         self.presenter = presenter
     }
 
@@ -45,7 +46,7 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: ResultPresentationOutput {
-    func setUserDefault(of tax: Double) {
+    func congfigure(tax: Double) {
         taxInputTextField.text = String(format: "%.f", tax)
     }
 
