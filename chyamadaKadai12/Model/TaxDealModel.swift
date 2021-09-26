@@ -45,3 +45,10 @@ final class TaxDealModel: TaxUserDefaultModel, TotalFeeCalculationModel {
         return result
     }
 }
+
+/* Feedback後コメント
+ 将来的にはUserDefaultsはRepositoryデザインパターンを踏襲して
+ Repositoryとしてクラスを分割していくのが
+ 責務と機能の追加のしやすさという点で良いかもしれない
+*/
+ 

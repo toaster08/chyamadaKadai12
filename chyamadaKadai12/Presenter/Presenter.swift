@@ -13,6 +13,7 @@ protocol UserDefaultLoad {
 
 protocol PresenterInput {
     func calculate(amount: String?, tax: String?)
+    func viewDidLoad()
 }
 
 final class Presenter: PresenterInput {
@@ -31,15 +32,13 @@ final class Presenter: PresenterInput {
 
         guard let amount = Double(amount ?? "") else { return }
         let result = taxDealModel.multyply(amount, by: tax)
-        view?.congfigure(result: result)
+        view?.configure(result: result)
     }
-}
 
-extension Presenter: UserDefaultLoad {
-    func loadDefaultTax() {
+    func viewDidLoad() {
         if taxDealModel.hasDefaultTax() {
             let tax = taxDealModel.loadDefaultTax()
-            view?.setUserDefault(of: tax)
+            view?.configure(tax: tax)
         }
     }
 }
